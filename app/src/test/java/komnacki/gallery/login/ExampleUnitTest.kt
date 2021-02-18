@@ -1,4 +1,4 @@
-package komnacki.gallery
+package komnacki.gallery.login
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
