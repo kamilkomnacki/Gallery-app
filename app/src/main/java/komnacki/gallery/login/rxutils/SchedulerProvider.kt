@@ -1,4 +1,4 @@
-package no.bstcm.gallery.rxutils
+package komnacki.gallery.login.rxutils
 
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

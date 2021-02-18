@@ -1,4 +1,4 @@
-package no.bstcm.gallery
+package komnacki.gallery
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -17,6 +17,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("no.bstcm.gallery", appContext.packageName)
+        assertEquals("komnacki.gallery", appContext.packageName)
     }
 }

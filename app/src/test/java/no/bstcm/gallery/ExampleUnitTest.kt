@@ -1,4 +1,4 @@
-package no.bstcm.gallery
+package komnacki.gallery
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

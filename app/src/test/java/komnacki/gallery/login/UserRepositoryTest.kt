@@ -1,7 +1,7 @@
-package no.bstcm.gallery.login
+package komnacki.gallery.login
 
 import io.reactivex.schedulers.TestScheduler
-import no.bstcm.gallery.rxutils.TestSchedulerProvider
+import komnacki.gallery.login.rxutils.TestSchedulerProvider
 import org.junit.Test
 import java.util.concurrent.TimeUnit
 

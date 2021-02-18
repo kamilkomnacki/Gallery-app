@@ -1,7 +1,7 @@
-package no.bstcm.gallery.login
+package komnacki.gallery.login
 
 import io.reactivex.Completable
-import no.bstcm.gallery.rxutils.BaseSchedulerProvider
+import komnacki.gallery.login.rxutils.BaseSchedulerProvider
 import java.util.concurrent.TimeUnit
 
 class UserRepository(private val schedulerProvider: BaseSchedulerProvider) {
