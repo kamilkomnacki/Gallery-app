@@ -1,4 +1,4 @@
-package komnacki.gallery.login
+package komnacki.gallery.login.data
 
 import io.reactivex.Completable
 import komnacki.gallery.login.rxutils.BaseSchedulerProvider

@@ -1,20 +1,18 @@
-package komnacki.gallery.login.network
+package komnacki.gallery.login.data.network
 
 import io.reactivex.Completable
-import io.reactivex.Observable
-import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 import retrofit2.http.Url
 
-interface UnsplashApi {
+interface UnsplashApiService {
     @GET("search/photos")
-    fun searchPhotos(
+    suspend fun search(
         @Query("client_id") clientId: String,
         @Query("query") query: String,
         @Query("page") pageNumber: Int,
         @Query("per_page") pageSize: Int
-    ): Observable<Response<SearchResponse>>
+    ): SearchResponse
 
     @GET
     fun trackDownload(@Url url: String): Completable

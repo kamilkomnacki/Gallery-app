@@ -1,6 +1,6 @@
-package komnacki.gallery.login.network
+package komnacki.gallery.login.data.network
 
-data class Image (
+data class UnsplashImage (
     val id: String,
     val width: Int,
     val height: Int,

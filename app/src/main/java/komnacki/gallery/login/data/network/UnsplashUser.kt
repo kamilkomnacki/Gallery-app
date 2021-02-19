@@ -1,4 +1,4 @@
-package komnacki.gallery.login.network
+package komnacki.gallery.login.data.network
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize;
