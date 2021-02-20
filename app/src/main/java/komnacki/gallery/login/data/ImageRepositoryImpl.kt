@@ -10,7 +10,7 @@ import komnacki.gallery.login.data.network.UnsplashImage
 import komnacki.gallery.login.data.paging.UnsplashImagePagingSource
 import komnacki.gallery.login.domain.ImageRepository
 
-class ImageRepository_Impl(
+class ImageRepositoryImpl(
     private val service: UnsplashApiService,
     private val mapper: ImageMapper
 ) : ImageRepository {
