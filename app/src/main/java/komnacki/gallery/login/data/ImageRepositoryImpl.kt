@@ -6,19 +6,19 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
 import komnacki.gallery.login.data.network.UnsplashApiService
-import komnacki.gallery.login.data.network.UnsplashImage
 import komnacki.gallery.login.data.paging.UnsplashImagePagingSource
 import komnacki.gallery.login.domain.ImageRepository
+import komnacki.gallery.login.domain.model.Image
 
 class ImageRepositoryImpl(
     private val service: UnsplashApiService,
     private val mapper: ImageMapper
 ) : ImageRepository {
 
-    override fun search(pagingConfig: PagingConfig): LiveData<PagingData<UnsplashImage>> {
+    override fun search(pagingConfig: PagingConfig): LiveData<PagingData<Image>> {
         return Pager(
             config = pagingConfig,
-            pagingSourceFactory = { UnsplashImagePagingSource(service)}
+            pagingSourceFactory = { UnsplashImagePagingSource(service, mapper)}
         ).liveData
     }
 

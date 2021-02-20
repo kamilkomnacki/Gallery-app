@@ -1,9 +1,11 @@
 package komnacki.gallery.login.data
 
-import komnacki.gallery.login.data.network.UnsplashImage
-import komnacki.gallery.login.data.network.UnsplashUrls
-import komnacki.gallery.login.data.network.UnsplashUser
-import komnacki.gallery.login.domain.Image
+import komnacki.gallery.login.data.model.UnsplashImage
+import komnacki.gallery.login.data.model.UnsplashUrls
+import komnacki.gallery.login.data.model.UnsplashUser
+import komnacki.gallery.login.domain.model.Image
+import komnacki.gallery.login.domain.model.Urls
+import komnacki.gallery.login.domain.model.User
 
 class ImageMapper : DomainMapper<UnsplashImage, Image> {
     override fun mapToDomainModel(model: UnsplashImage): Image {
@@ -12,8 +14,25 @@ class ImageMapper : DomainMapper<UnsplashImage, Image> {
             width = model.width,
             height = model.height,
             description = model.description,
-            urls = model.urls.small,
-            user = model.user.username
+            urls = mapToDomainUrlsModel(model.urls),
+            user = mapToDomainUser(model.user)
+        )
+    }
+
+    private fun mapToDomainUrlsModel(model : UnsplashUrls) : Urls {
+        return Urls(
+            thumb = model.thumb,
+            small = model.small,
+            regular = model.regular,
+            full = model.full,
+            raw = model.raw
+        )
+    }
+
+    private fun mapToDomainUser(model : UnsplashUser) : User {
+        return User(
+            id = model.id,
+            username = model.username
         )
     }
 
@@ -22,10 +41,26 @@ class ImageMapper : DomainMapper<UnsplashImage, Image> {
             id = domainModel.id,
             width = domainModel.width,
             height = domainModel.height,
-            color = "#000000",
             description = domainModel.description,
-            urls = UnsplashUrls(null, domainModel.urls, null, null, null, null, null),
-            user = UnsplashUser("0", domainModel.user)
+            urls = mapFromDomainUrlsModel(domainModel.urls),
+            user = mapToDomainUser(domainModel.user)
+        )
+    }
+
+    private fun mapFromDomainUrlsModel(model : Urls) : UnsplashUrls {
+        return UnsplashUrls(
+            thumb = model.thumb,
+            small = model.small,
+            regular = model.regular,
+            full = model.full,
+            raw = model.raw
+        )
+    }
+
+    private fun mapToDomainUser(model : User) : UnsplashUser {
+        return UnsplashUser(
+            id = model.id,
+            username = model.username
         )
     }
 

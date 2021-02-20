@@ -9,19 +9,19 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import komnacki.gallery.R
+import komnacki.gallery.login.domain.model.Image
 import kotlinx.android.synthetic.main.item_gallery.view.*
 
-class GalleryAdapter : PagingDataAdapter<String, RecyclerView.ViewHolder>(REPO_COMPARATOR) {
+class GalleryAdapter : PagingDataAdapter<Image, RecyclerView.ViewHolder>(REPO_COMPARATOR) {
 
     companion object {
-        private val REPO_COMPARATOR = object : DiffUtil.ItemCallback<String>() {
-            override fun areItemsTheSame(oldItem: String, newItem: String): Boolean =
-                oldItem == newItem
+        private val REPO_COMPARATOR = object : DiffUtil.ItemCallback<Image>() {
+            override fun areItemsTheSame(oldItem: Image, newItem: Image): Boolean =
+                oldItem.id == newItem.id
 
 
-            override fun areContentsTheSame(oldItem: String, newItem: String): Boolean =
-                oldItem == newItem
-
+            override fun areContentsTheSame(oldItem: Image, newItem: Image): Boolean =
+                oldItem.id == newItem.id
         }
     }
 
@@ -42,9 +42,9 @@ class GalleryAdapter : PagingDataAdapter<String, RecyclerView.ViewHolder>(REPO_C
             }
         }
 
-        fun onBind(item : String?) {
+        fun onBind(item : Image?) {
             itemView.run {
-                ivItem.load(item) {
+                ivItem.load(item?.urls?.small) {
                     placeholder(ContextCompat.getDrawable(context, R.color.colorAccent))
                 }
             }

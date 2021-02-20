@@ -1,11 +1,14 @@
-package komnacki.gallery.login.data.network
+package komnacki.gallery.login.data.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class UnsplashImage (
     val id: String,
     val width: Int,
     val height: Int,
-    val color: String? = "#000000",
     val description: String?,
     val urls: UnsplashUrls,
     val user: UnsplashUser
-)
+) : Parcelable
