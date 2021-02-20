@@ -7,6 +7,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import komnacki.gallery.login.data.ImageMapper
 import komnacki.gallery.login.data.network.UnsplashApiService
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -17,9 +19,16 @@ object NetworkModule {
     @Singleton
     @Provides
     fun provideUnsplashService(): UnsplashApiService {
+        val logging = HttpLoggingInterceptor()
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+
+        val httpClient = OkHttpClient.Builder()
+        httpClient.addInterceptor(logging)
+
         return Retrofit.Builder()
             .baseUrl("https://api.unsplash.com/")
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+            .client(httpClient.build())
             .build()
             .create(UnsplashApiService::class.java)
     }
