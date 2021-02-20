@@ -8,46 +8,43 @@ import androidx.recyclerview.widget.RecyclerView.Recycler
 import kotlin.math.max
 
 
-class GridAutofitLayoutManager : GridLayoutManager {
+class GridAutofitLayoutManager(
+    context: Context,
+    columnWidth: Int
+) : GridLayoutManager(context, INITIAL_SPAN_COUNT) {
+
+    private companion object CONSTANTS {
+        const val INITIAL_SPAN_COUNT = 1
+        const val DEFAULT_COLUMN_WIDTH = 48f
+    }
+
     private var columnWidth = 0
     private var isColumnWidthChanged = true
     private var lastWidth = 0
     private var lastHeight = 0
 
-    constructor(context: Context, columnWidth: Int) : super(context, 1) {
-        /* Initially set spanCount to 1, will be changed automatically later. */
-        setColumnWidth(checkedColumnWidth(context, columnWidth))
+    init {
+        setColumnWidth(
+            verifyColumnWidth(context, columnWidth)
+        )
     }
 
-    constructor(
-        context: Context,
-        columnWidth: Int,
-        orientation: Int,
-        reverseLayout: Boolean
-    ) : super(context, 1, orientation, reverseLayout) {
-
-        /* Initially set spanCount to 1, will be changed automatically later. */
-        setColumnWidth(checkedColumnWidth(context, columnWidth))
-    }
-
-    private fun checkedColumnWidth(context: Context, columnWidth: Int): Int {
-        var columnWidth = columnWidth
-        if (columnWidth <= 0) {
-            /* Set default columnWidth value (48dp here). It is better to move this constant
-            to static constant on top, but we need context to convert it to dp, so can't really
-            do so. */
-            columnWidth = TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP, 48f,
-                context.resources.displayMetrics
-            ).toInt()
-        }
-        return columnWidth
-    }
-
-    fun setColumnWidth(newColumnWidth: Int) {
-        if (newColumnWidth > 0 && newColumnWidth != columnWidth) {
+    private fun setColumnWidth(newColumnWidth: Int) {
+        if (columnWidth != newColumnWidth) {
             columnWidth = newColumnWidth
             isColumnWidthChanged = true
+        }
+    }
+
+    private fun verifyColumnWidth(context: Context, columnWidth: Int): Int {
+        return if (columnWidth <= 0) {
+            TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                DEFAULT_COLUMN_WIDTH,
+                context.resources.displayMetrics
+            ).toInt()
+        } else {
+            columnWidth
         }
     }
 
@@ -55,12 +52,8 @@ class GridAutofitLayoutManager : GridLayoutManager {
         val width = width
         val height = height
         if (columnWidth > 0 && width > 0 && height > 0 && (isColumnWidthChanged || lastWidth != width || lastHeight != height)) {
-            val totalSpace: Int = if (orientation == VERTICAL) {
-                width - paddingRight - paddingLeft
-            } else {
-                height - paddingTop - paddingBottom
-            }
-            val spanCount = max(1, totalSpace / columnWidth)
+            val totalSpace = getTotalSpace(width, height)
+            val spanCount = max(INITIAL_SPAN_COUNT, getColumnCount(totalSpace))
             setSpanCount(spanCount)
             isColumnWidthChanged = false
         }
@@ -68,4 +61,12 @@ class GridAutofitLayoutManager : GridLayoutManager {
         lastHeight = height
         super.onLayoutChildren(recycler, state)
     }
+
+    private fun getTotalSpace(width: Int, height: Int) = if (orientation == VERTICAL) {
+        width - paddingRight - paddingLeft
+    } else {
+        height - paddingTop - paddingBottom
+    }
+
+    private fun getColumnCount(totalSpace: Int) = totalSpace / columnWidth
 }
