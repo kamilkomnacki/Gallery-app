@@ -25,12 +25,12 @@ class GalleryAdapter : PagingDataAdapter<Image, RecyclerView.ViewHolder>(REPO_CO
         }
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as ImageHolder).onBind(item = getItem(position))
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ImageHolder.getInstance(parent)
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        (holder as ImageHolder).onBind(item = getItem(position))
     }
 
     class ImageHolder(view : View) : RecyclerView.ViewHolder(view) {
