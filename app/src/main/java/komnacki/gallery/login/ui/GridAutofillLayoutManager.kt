@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView.Recycler
 import kotlin.math.max
 
 
-class GridAutofitLayoutManager(
+class GridAutofillLayoutManager(
     context: Context,
     columnWidth: Int
 ) : GridLayoutManager(context, INITIAL_SPAN_COUNT) {
@@ -49,9 +49,7 @@ class GridAutofitLayoutManager(
     }
 
     override fun onLayoutChildren(recycler: Recycler, state: RecyclerView.State) {
-        val width = width
-        val height = height
-        if (columnWidth > 0 && width > 0 && height > 0 && (isColumnWidthChanged || lastWidth != width || lastHeight != height)) {
+        if (isLayoutChange()) {
             val totalSpace = getTotalSpace(width, height)
             val spanCount = max(INITIAL_SPAN_COUNT, getColumnCount(totalSpace))
             setSpanCount(spanCount)
@@ -62,11 +60,15 @@ class GridAutofitLayoutManager(
         super.onLayoutChildren(recycler, state)
     }
 
-    private fun getTotalSpace(width: Int, height: Int) = if (orientation == VERTICAL) {
-        width - paddingRight - paddingLeft
-    } else {
-        height - paddingTop - paddingBottom
-    }
+    private fun isLayoutChange() =
+        columnWidth > 0 && width > 0 && height > 0 && (isColumnWidthChanged || lastWidth != width || lastHeight != height)
+
+    private fun getTotalSpace(width: Int, height: Int) =
+        if (orientation == VERTICAL) {
+            width - paddingRight - paddingLeft
+        } else {
+            height - paddingTop - paddingBottom
+        }
 
     private fun getColumnCount(totalSpace: Int) = totalSpace / columnWidth
 }

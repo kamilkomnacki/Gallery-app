@@ -36,7 +36,7 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery) {
 
 
     private fun setUpViews() {
-        rv_gallery.layoutManager = GridAutofitLayoutManager(requireContext(), 300)
+        rv_gallery.layoutManager = GridAutofillLayoutManager(requireContext(), 300)
         rv_gallery.adapter = adapter
     }
 }
