@@ -1,6 +1,7 @@
 package komnacki.gallery.login
 
 import io.reactivex.schedulers.TestScheduler
+import komnacki.gallery.login.data.UserRepository
 import komnacki.gallery.login.rxutils.TestSchedulerProvider
 import org.junit.Test
 import java.util.concurrent.TimeUnit
