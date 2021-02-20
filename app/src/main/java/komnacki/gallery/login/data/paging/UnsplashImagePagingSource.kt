@@ -15,7 +15,7 @@ class UnsplashImagePagingSource
         val page = params.key ?: DEFAULT_PAGE_INDEX
 
         return try {
-            val response = service.search(UnsplashApiService.API_TOKEN, "rower", page, params.loadSize)
+            val response = service.search(UnsplashApiService.API_TOKEN, "góry", page, params.loadSize)
             LoadResult.Page(
                 data = response.results,
                 prevKey = if(page == DEFAULT_PAGE_INDEX) { null } else { page - 1 },

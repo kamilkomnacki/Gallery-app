@@ -1,16 +1,13 @@
 package komnacki.gallery.login.ui
 
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.viewModelScope
+import android.util.Log
+import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
 import dagger.hilt.android.lifecycle.HiltViewModel
 import komnacki.gallery.login.App
 import komnacki.gallery.login.domain.ImageRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,10 +19,17 @@ constructor(
     private val savedStateHandle: SavedStateHandle
 ) : AndroidViewModel(app) {
 
-    fun fetchImages() : Flow<PagingData<String>> {
-        return repository.letImagesFlow()
+    val images : LiveData<PagingData<String>> = fetchImages()
+
+    fun fetchImages() : LiveData<PagingData<String>> {
+        return repository.get()
             .map { it.map { it.urls.small } }
             .cachedIn(viewModelScope)
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        Log.d("KK: ", "GalleryViewModel onCleared")
     }
 }
 
