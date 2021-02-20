@@ -7,11 +7,7 @@ import komnacki.gallery.login.data.network.UnsplashImage
 
 interface ImageRepository {
 
-    suspend fun search(token: String, page: Int, query: String): List<Image>
-
-    suspend fun get(token: String, id: Int): Image
-
-    fun get(pagingConfig: PagingConfig = getDefaultPageConfig()) : LiveData<PagingData<UnsplashImage>>
+    fun search(pagingConfig: PagingConfig = getDefaultPageConfig()) : LiveData<PagingData<UnsplashImage>>
 
     fun getDefaultPageConfig(): PagingConfig
 }

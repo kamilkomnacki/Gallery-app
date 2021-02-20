@@ -23,7 +23,7 @@ constructor(
     val images : LiveData<PagingData<String>> = fetchImages()
 
     private fun fetchImages() : LiveData<PagingData<String>> {
-        return repository.get()
+        return repository.search()
             .map { it.map { it.urls.small } }
             .cachedIn(viewModelScope)
     }
