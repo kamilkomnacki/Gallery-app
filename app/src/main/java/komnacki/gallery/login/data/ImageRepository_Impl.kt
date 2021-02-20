@@ -15,8 +15,6 @@ class ImageRepository_Impl(
     private val mapper: ImageMapper
 ) : ImageRepository {
 
-    private val pageSize = 10
-
     override fun search(pagingConfig: PagingConfig): LiveData<PagingData<UnsplashImage>> {
         return Pager(
             config = pagingConfig,
