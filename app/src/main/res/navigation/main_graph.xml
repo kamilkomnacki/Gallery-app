@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/fragment_gallery">
+
+    <fragment
+        android:id="@+id/fragment_gallery"
+        android:name="komnacki.gallery.login.ui.GalleryFragment"
+        android:label="GalleryFragment">
+<!--        <action-->
+<!--            android:id="@+id/selectImage"-->
+<!--            app:destination="@+id/fragment_login"/>-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_login"
+        android:name="komnacki.gallery.login.ui.GalleryFragment"
+        android:label="LoginFragment"/>
+
+</navigation>

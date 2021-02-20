@@ -38,11 +38,4 @@ object NetworkModule {
     fun provideImageMapper(): ImageMapper {
         return ImageMapper()
     }
-
-    @Singleton
-    @Provides
-//    @Named("token")
-    fun provideAuthToken(): String{
-        return "Token"
-    }
 }

@@ -19,5 +19,6 @@ interface UnsplashApiService {
 
     companion object {
         const val BASE_URL = "https://api.unsplash.com/"
+        const val API_TOKEN = "CGMrIUppQWgHAOi6sy-beLfhcCyNm1NKUW7SnX_vspc"
     }
 }
