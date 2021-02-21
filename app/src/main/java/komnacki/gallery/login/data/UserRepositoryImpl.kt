@@ -9,10 +9,9 @@ class UserRepositoryImpl(
     val schedulerProvider: BaseSchedulerProvider
 ) : UserRepository {
 
-    var user: AppUser? = null
-        private set
+    private var user: AppUser? = null
 
-    val isLoggedIn: Boolean
+    private val isLoggedIn: Boolean
         get() = user != null
 
     init {
@@ -29,13 +28,15 @@ class UserRepositoryImpl(
                     setLoggedInUser(AppUser(username))
                     Completable.complete()
                 }
-                })
-            }
+            })
+    }
+
+    override fun isLogIn(): Boolean = isLoggedIn
 
     /**
-    * If user credentials will be cached in local storage, it is recommended it be encrypted
-    * @see https://developer.android.com/training/articles/keystore
-    * */
+     * If user credentials will be cached in local storage, it is recommended it be encrypted
+     * @see https://developer.android.com/training/articles/keystore
+     * */
     private fun setLoggedInUser(loggedInUser: AppUser) {
         this.user = loggedInUser
 

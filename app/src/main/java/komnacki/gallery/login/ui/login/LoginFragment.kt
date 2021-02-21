@@ -2,7 +2,6 @@ package komnacki.gallery.login.ui.login
 
 import android.os.Bundle
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
@@ -10,6 +9,7 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import komnacki.gallery.R
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -25,8 +25,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         viewModel.loginFormState.observe(viewLifecycleOwner, Observer {
             val loginState = it ?: return@Observer
 
-            // disable login button unless both username / password is valid
-            Log.d("KK: ", "KK: loginState: ${loginState.isDataValid}")
             btn_login.isEnabled = loginState.isDataValid
 
             if (loginState.usernameError != null) {
@@ -45,23 +43,17 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         viewModel.loginResult.observe(viewLifecycleOwner, Observer {
             val loginResult = it ?: return@Observer
 
-
             if(loginResult.isPending == true) {
                 onLoginPending()
             } else {
                 onLoginTerminate()
                 if (loginResult.success != null) {
-                    showLoginSuccess(loginResult.success)
+                    onLoginSuccess(loginResult.success)
                 }
                 if (loginResult.error != null) {
-                    showLoginFailed(loginResult.error)
+                    onLoginFailed(loginResult.error)
                 }
             }
-
-//            setResult(Activity.RESULT_OK)
-
-            //Complete and destroy login activity once successful
-//            finish()
         })
 
         et_password.setOnEditorActionListener { _, actionId, _ ->
@@ -119,11 +111,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         et_username.removeTextChangedListener(passwordTextWatcher)
     }
 
-    private fun showLoginSuccess(@StringRes successString: Int) {
+    private fun onLoginSuccess(@StringRes successString: Int) {
         Toast.makeText(requireContext(), successString, Toast.LENGTH_SHORT).show()
+        this.findNavController().navigate(R.id.toDetailFragment)
     }
 
-    private fun showLoginFailed(@StringRes errorString: Int) {
+    private fun onLoginFailed(@StringRes errorString: Int) {
         Toast.makeText(requireContext(), errorString, Toast.LENGTH_SHORT).show()
     }
 
