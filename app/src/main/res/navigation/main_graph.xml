@@ -10,10 +10,10 @@
         android:label="GalleryFragment">
         <action
             android:id="@+id/toLoginFragment"
-            app:destination="@+id/fragment_login"/>
+            app:destination="@+id/fragment_login" />
         <action
             android:id="@+id/toDetailFragment"
-            app:destination="@+id/fragment_detail"/>
+            app:destination="@+id/fragment_detail" />
     </fragment>
 
     <fragment
@@ -22,14 +22,13 @@
         android:label="LoginFragment">
         <action
             android:id="@id/toDetailFragment"
-            app:popUpTo="@id/fragment_gallery"
-            app:destination="@id/fragment_detail"/>
+            app:destination="@id/fragment_detail"
+            app:popUpTo="@id/fragment_gallery" />
     </fragment>
 
     <fragment
         android:id="@+id/fragment_detail"
         android:name="komnacki.gallery.login.ui.detail.DetailFragment"
-        android:label="DetailFragment">
-    </fragment>
+        android:label="DetailFragment"/>
 
 </navigation>
