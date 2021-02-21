@@ -12,7 +12,9 @@ import komnacki.gallery.R
 import komnacki.gallery.login.domain.model.Image
 import kotlinx.android.synthetic.main.item_gallery.view.*
 
-class GalleryAdapter : PagingDataAdapter<Image, RecyclerView.ViewHolder>(REPO_COMPARATOR) {
+class GalleryAdapter(
+    private val itemClickListener: (Image) -> Unit
+) : PagingDataAdapter<Image, RecyclerView.ViewHolder>(REPO_COMPARATOR) {
 
     companion object {
         private val REPO_COMPARATOR = object : DiffUtil.ItemCallback<Image>() {
@@ -30,22 +32,29 @@ class GalleryAdapter : PagingDataAdapter<Image, RecyclerView.ViewHolder>(REPO_CO
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as ImageHolder).onBind(item = getItem(position))
+        (holder as ImageHolder).onBind(item = getItem(position), itemClickListener)
     }
 
-    class ImageHolder(view : View) : RecyclerView.ViewHolder(view) {
+    class ImageHolder(view: View) :
+        RecyclerView.ViewHolder(view) {
         companion object {
-            fun getInstance(parent: ViewGroup) : ImageHolder {
-                val inflater  = LayoutInflater.from(parent.context)
+            fun getInstance(parent: ViewGroup): ImageHolder {
+                val inflater = LayoutInflater.from(parent.context)
                 val view = inflater.inflate(R.layout.item_gallery, parent, false)
                 return ImageHolder(view)
             }
         }
 
-        fun onBind(item : Image?) {
+        fun onBind(item: Image?, onItemClickListener: (Image) -> Unit) {
             itemView.run {
                 ivItem.load(item?.urls?.small) {
                     placeholder(ContextCompat.getDrawable(context, R.color.secondary_light))
+                }
+
+                item?.let {
+                    setOnClickListener {
+                        onItemClickListener.invoke(item)
+                    }
                 }
             }
         }

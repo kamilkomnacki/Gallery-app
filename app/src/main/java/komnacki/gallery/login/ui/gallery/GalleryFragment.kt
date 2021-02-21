@@ -1,5 +1,7 @@
 package komnacki.gallery.login.ui.gallery
 
+import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -13,24 +15,51 @@ import kotlinx.android.synthetic.main.fragment_gallery.*
 
 @AndroidEntryPoint
 class GalleryFragment : Fragment(R.layout.fragment_gallery) {
+
+    private companion object Constants {
+        const val IS_DIALOG_VISIBLE = "IS_DIALOG_VISIBLE"
+
+    }
     private val viewModel by viewModels<GalleryViewModel>()
-    private val adapter: GalleryAdapter = GalleryAdapter()
+    private val adapter: GalleryAdapter = GalleryAdapter {
+//        if ((0..3).random().rem(2) == 0) {
+        dialog.show()
+//        }
+    }
+    private lateinit var dialog: AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("KK: ", "Gallery fragment onCreate")
+
+        dialog = getLoginDialog(requireContext())
+
+        val isDialogVisible = savedInstanceState?.getBoolean(IS_DIALOG_VISIBLE)
+        if (isDialogVisible == true) {
+            dialog.show()
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d("KK: ", "Gallery fragment onViewCreated")
 
-        setUpStateListener{ showSnackbarError(view) }
+        setUpStateListener { showSnackbarError(view) }
         setUpViews()
 
         viewModel.images.observe(viewLifecycleOwner, {
             adapter.submitData(lifecycle, it)
         })
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putBoolean(IS_DIALOG_VISIBLE, dialog.isShowing)
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        dialog.dismiss()
     }
 
     private fun setUpStateListener(onError: () -> Unit) {
@@ -63,5 +92,17 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery) {
             .setAction("Retry") {
                 adapter.retry()
             }.show()
+    }
+
+    private fun getLoginDialog(context: Context): AlertDialog {
+        return AlertDialog.Builder(context)
+            .setTitle("Account Required")
+            .setPositiveButton("Sing in") { dialogInterface, i ->
+                Log.d("KK: ", "login")
+            }
+            .setNegativeButton("Cancel") { dialogInterface, i ->
+                Log.d("KK: ", "login cancel")
+                dialogInterface.dismiss()
+            }.create()
     }
 }
