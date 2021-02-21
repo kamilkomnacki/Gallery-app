@@ -75,6 +75,18 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        et_username.addTextChangedListener(usernameTextWatcher)
+        et_password.addTextChangedListener(passwordTextWatcher)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        et_username.removeTextChangedListener(usernameTextWatcher)
+        et_username.removeTextChangedListener(passwordTextWatcher)
+    }
+
     private fun onLoginStart() {
         viewModel.login(et_username.text.toString(), et_password.text.toString())
     }
@@ -97,18 +109,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         progress_login.visibility = View.VISIBLE
         btn_cancel.visibility = View.VISIBLE
         btn_login.visibility = View.INVISIBLE
-    }
-
-    override fun onResume() {
-        super.onResume()
-        et_username.addTextChangedListener(usernameTextWatcher)
-        et_password.addTextChangedListener(passwordTextWatcher)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        et_username.removeTextChangedListener(usernameTextWatcher)
-        et_username.removeTextChangedListener(passwordTextWatcher)
     }
 
     private fun onLoginSuccess(@StringRes successString: Int) {
