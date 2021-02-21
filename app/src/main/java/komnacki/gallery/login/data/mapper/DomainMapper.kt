@@ -1,4 +1,4 @@
-package komnacki.gallery.login.data
+package komnacki.gallery.login.data.mapper
 
 interface DomainMapper <T, DomainModel>{
 

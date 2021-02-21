@@ -8,8 +8,8 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
 import komnacki.gallery.login.App
-import komnacki.gallery.login.data.UserRepository
 import komnacki.gallery.login.domain.ImageRepository
+import komnacki.gallery.login.domain.UserRepository
 import komnacki.gallery.login.domain.model.Image
 import javax.inject.Inject
 

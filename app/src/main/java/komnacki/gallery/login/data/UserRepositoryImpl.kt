@@ -2,6 +2,7 @@ package komnacki.gallery.login.data
 
 import io.reactivex.Completable
 import komnacki.gallery.login.data.model.AppUser
+import komnacki.gallery.login.domain.UserRepository
 import komnacki.gallery.login.rxutils.BaseSchedulerProvider
 import java.util.concurrent.TimeUnit
 

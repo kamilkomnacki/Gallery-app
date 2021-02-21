@@ -10,7 +10,7 @@ import io.reactivex.disposables.Disposable
 import komnacki.gallery.R
 import komnacki.gallery.login.App
 import komnacki.gallery.login.Constants
-import komnacki.gallery.login.data.UserRepository
+import komnacki.gallery.login.domain.UserRepository
 import komnacki.gallery.login.rxutils.SchedulerProvider
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit

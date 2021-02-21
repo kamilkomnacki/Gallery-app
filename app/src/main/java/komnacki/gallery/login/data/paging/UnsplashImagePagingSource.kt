@@ -3,7 +3,7 @@ package komnacki.gallery.login.data.paging
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import komnacki.gallery.login.Constants
-import komnacki.gallery.login.data.ImageMapper
+import komnacki.gallery.login.data.mapper.ImageMapper
 import komnacki.gallery.login.data.network.UnsplashApiService
 import komnacki.gallery.login.domain.model.Image
 import retrofit2.HttpException
@@ -11,7 +11,8 @@ import java.io.IOException
 
 class UnsplashImagePagingSource(
     private val service: UnsplashApiService,
-    private val mapper: ImageMapper) : PagingSource<Int, Image>() {
+    private val mapper: ImageMapper
+) : PagingSource<Int, Image>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Image> {
         val defaultPageIndex = 1

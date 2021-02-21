@@ -1,4 +1,4 @@
-package komnacki.gallery.login.data
+package komnacki.gallery.login.data.mapper
 
 import komnacki.gallery.login.data.model.UnsplashImage
 import komnacki.gallery.login.data.model.UnsplashUrls

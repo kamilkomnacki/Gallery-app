@@ -6,7 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import komnacki.gallery.login.Constants
-import komnacki.gallery.login.data.ImageMapper
+import komnacki.gallery.login.data.mapper.ImageMapper
 import komnacki.gallery.login.data.network.UnsplashApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
