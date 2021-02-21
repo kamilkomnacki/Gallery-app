@@ -13,7 +13,7 @@ class GridAutofillLayoutManager(
     columnWidth: Int
 ) : GridLayoutManager(context, INITIAL_SPAN_COUNT) {
 
-    private companion object CONSTANTS {
+    private companion object {
         const val INITIAL_SPAN_COUNT = 1
         const val DEFAULT_COLUMN_WIDTH = 48f
     }
