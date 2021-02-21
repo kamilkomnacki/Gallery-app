@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import komnacki.gallery.login.Constants
 import komnacki.gallery.login.data.ImageMapper
 import komnacki.gallery.login.data.network.UnsplashApiService
 import okhttp3.OkHttpClient
@@ -26,7 +27,7 @@ object NetworkModule {
         httpClient.addInterceptor(logging)
 
         return Retrofit.Builder()
-            .baseUrl("https://api.unsplash.com/")
+            .baseUrl(Constants.BASE_API_URL)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .client(httpClient.build())
             .build()
