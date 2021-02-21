@@ -5,13 +5,11 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import komnacki.gallery.R
 import kotlinx.android.synthetic.main.fragment_gallery.*
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class GalleryFragment : Fragment(R.layout.fragment_gallery) {
@@ -30,11 +28,9 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery) {
         setUpStateListener{ showSnackbarError(view) }
         setUpViews()
 
-        lifecycleScope.launch {
-            viewModel.images.observe(viewLifecycleOwner, {
-                adapter.submitData(lifecycle, it)
-            })
-        }
+        viewModel.images.observe(viewLifecycleOwner, {
+            adapter.submitData(lifecycle, it)
+        })
     }
 
     private fun setUpStateListener(onError: () -> Unit) {
