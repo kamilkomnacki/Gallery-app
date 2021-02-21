@@ -22,6 +22,7 @@
         android:label="LoginFragment">
         <action
             android:id="@id/toDetailFragment"
+            app:popUpTo="@id/fragment_gallery"
             app:destination="@id/fragment_detail"/>
     </fragment>
 
