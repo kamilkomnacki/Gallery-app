@@ -8,14 +8,27 @@
         android:id="@+id/fragment_gallery"
         android:name="komnacki.gallery.login.ui.gallery.GalleryFragment"
         android:label="GalleryFragment">
-<!--        <action-->
-<!--            android:id="@+id/selectImage"-->
-<!--            app:destination="@+id/fragment_login"/>-->
+        <action
+            android:id="@+id/toLoginFragment"
+            app:destination="@+id/fragment_login"/>
+        <action
+            android:id="@+id/toDetailFragment"
+            app:destination="@+id/fragment_detail"/>
     </fragment>
 
     <fragment
         android:id="@+id/fragment_login"
-        android:name="komnacki.gallery.login.ui.gallery.GalleryFragment"
-        android:label="LoginFragment"/>
+        android:name="komnacki.gallery.login.ui.login.LoginFragment"
+        android:label="LoginFragment">
+        <action
+            android:id="@id/toDetailFragment"
+            app:destination="@id/fragment_detail"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_detail"
+        android:name="komnacki.gallery.login.ui.login.LoginFragment"
+        android:label="DetailFragment">
+    </fragment>
 
 </navigation>
