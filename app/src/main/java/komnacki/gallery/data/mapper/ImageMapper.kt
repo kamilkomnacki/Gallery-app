@@ -11,8 +11,6 @@ class ImageMapper : DomainMapper<UnsplashImage, Image> {
     override fun mapToDomainModel(model: UnsplashImage): Image {
         return Image(
             id = model.id,
-            width = model.width,
-            height = model.height,
             description = model.description,
             urls = mapToDomainUrlsModel(model.urls),
             user = mapToDomainUser(model.user)
@@ -28,7 +26,6 @@ class ImageMapper : DomainMapper<UnsplashImage, Image> {
 
     private fun mapToDomainUser(model : UnsplashUser) : User {
         return User(
-            id = model.id,
             username = model.username
         )
     }
@@ -36,8 +33,6 @@ class ImageMapper : DomainMapper<UnsplashImage, Image> {
     override fun mapFromDomainModel(domainModel: Image): UnsplashImage {
         return UnsplashImage(
             id = domainModel.id,
-            width = domainModel.width,
-            height = domainModel.height,
             description = domainModel.description,
             urls = mapFromDomainUrlsModel(domainModel.urls),
             user = mapToDomainUser(domainModel.user)
@@ -53,7 +48,6 @@ class ImageMapper : DomainMapper<UnsplashImage, Image> {
 
     private fun mapToDomainUser(model : User) : UnsplashUser {
         return UnsplashUser(
-            id = model.id,
             username = model.username
         )
     }
