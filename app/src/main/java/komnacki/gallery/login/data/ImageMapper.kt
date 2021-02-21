@@ -21,11 +21,8 @@ class ImageMapper : DomainMapper<UnsplashImage, Image> {
 
     private fun mapToDomainUrlsModel(model : UnsplashUrls) : Urls {
         return Urls(
-            thumb = model.thumb,
             small = model.small,
-            regular = model.regular,
-            full = model.full,
-            raw = model.raw
+            full = model.full
         )
     }
 
@@ -49,11 +46,8 @@ class ImageMapper : DomainMapper<UnsplashImage, Image> {
 
     private fun mapFromDomainUrlsModel(model : Urls) : UnsplashUrls {
         return UnsplashUrls(
-            thumb = model.thumb,
             small = model.small,
-            regular = model.regular,
-            full = model.full,
-            raw = model.raw
+            full = model.full
         )
     }
 
