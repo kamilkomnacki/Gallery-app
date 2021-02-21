@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/fragment_gallery"
-        android:name="komnacki.gallery.login.ui.gallery.GalleryFragment"
+        android:name="komnacki.gallery.ui.gallery.GalleryFragment"
         android:label="GalleryFragment">
         <action
             android:id="@+id/toLoginFragment"
@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/fragment_login"
-        android:name="komnacki.gallery.login.ui.login.LoginFragment"
+        android:name="komnacki.gallery.ui.login.LoginFragment"
         android:label="LoginFragment">
         <action
             android:id="@id/toDetailFragment"
@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/fragment_detail"
-        android:name="komnacki.gallery.login.ui.detail.DetailFragment"
+        android:name="komnacki.gallery.ui.detail.DetailFragment"
         android:label="DetailFragment"/>
 
 </navigation>
