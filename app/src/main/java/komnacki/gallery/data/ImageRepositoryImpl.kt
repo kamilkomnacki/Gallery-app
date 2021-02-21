@@ -5,6 +5,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
+import komnacki.gallery.Constants
 import komnacki.gallery.data.mapper.ImageMapper
 import komnacki.gallery.data.network.UnsplashApiService
 import komnacki.gallery.data.paging.UnsplashImagePagingSource
@@ -25,8 +26,8 @@ class ImageRepositoryImpl(
 
     override fun getDefaultPageConfig(): PagingConfig {
         return PagingConfig(
-            pageSize = 10,
-            initialLoadSize = 10,
+            pageSize = Constants.API_PAGE_SIZE,
+            initialLoadSize = Constants.API_PAGE_SIZE,
             enablePlaceholders = true)
     }
 }
