@@ -31,7 +31,7 @@ class GalleryAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as ImageHolder).onBind(item = getItem(position), itemClickListener)
+        (holder as ImageHolder).onBind(getItem(position), itemClickListener)
     }
 
     class ImageHolder(view: View) :
