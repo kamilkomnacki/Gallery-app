@@ -45,10 +45,9 @@ class GalleryAdapter : PagingDataAdapter<Image, RecyclerView.ViewHolder>(REPO_CO
         fun onBind(item : Image?) {
             itemView.run {
                 ivItem.load(item?.urls?.small) {
-                    placeholder(ContextCompat.getDrawable(context, R.color.colorAccent))
+                    placeholder(ContextCompat.getDrawable(context, R.color.secondary_light))
                 }
             }
         }
     }
-
 }
