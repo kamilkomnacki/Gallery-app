@@ -28,7 +28,7 @@ object RepositoryModule {
         )
     }
 
-
+    @Singleton
     @Provides
     fun provideLoginRepository(): UserRepository{
         return UserRepositoryImpl(
