@@ -3,11 +3,13 @@
 
     <!-- Login -->
     <string name="login_fragment_title">Account required</string>
-    <string name="login_prompt_email">Email</string>
+    <string name="login_prompt_username">Username</string>
     <string name="login_prompt_password">Password</string>
     <string name="login_action_sign_in">Sign in</string>
+    <string name="login_action_cancel">Cancel</string>
     <string name="login_action_ime_sign_in">Sign in</string>
-    <string name="login_invalid_username">Not a valid address email</string>
+    <string name="login_invalid_username">Not a valid username</string>
     <string name="login_invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="login_success">"Login success"</string>
 </resources>

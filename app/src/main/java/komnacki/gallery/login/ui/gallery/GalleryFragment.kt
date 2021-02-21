@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -99,6 +100,7 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery) {
             .setTitle("Account Required")
             .setPositiveButton("Sing in") { dialogInterface, i ->
                 Log.d("KK: ", "login")
+                this.findNavController().navigate(R.id.toLoginFragment)
             }
             .setNegativeButton("Cancel") { dialogInterface, i ->
                 Log.d("KK: ", "login cancel")

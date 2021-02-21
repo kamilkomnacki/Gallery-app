@@ -16,7 +16,7 @@ class GalleryViewModel
 @Inject
 constructor(
     app: App,
-    private val repository: ImageRepository,
+    private val repository: ImageRepository
 ) : AndroidViewModel(app) {
 
     val images : LiveData<PagingData<Image>> = fetchImages()

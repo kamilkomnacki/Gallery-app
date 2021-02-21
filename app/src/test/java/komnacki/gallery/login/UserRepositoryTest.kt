@@ -1,14 +1,14 @@
 package komnacki.gallery.login
 
 import io.reactivex.schedulers.TestScheduler
-import komnacki.gallery.login.data.UserRepository
+import komnacki.gallery.login.data.UserRepositoryImpl
 import komnacki.gallery.login.rxutils.TestSchedulerProvider
 import org.junit.Test
 import java.util.concurrent.TimeUnit
 
 class UserRepositoryTest {
     private val testScheduler = TestScheduler()
-    private val userRepository = UserRepository(TestSchedulerProvider(computation = testScheduler))
+    private val userRepository = UserRepositoryImpl(TestSchedulerProvider(computation = testScheduler))
 
     @Test
     fun loginIncorrectCredentials() {
