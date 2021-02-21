@@ -22,12 +22,12 @@ class UserRepositoryImpl(
         return Completable
             .timer(5, TimeUnit.SECONDS, schedulerProvider.computation)
             .andThen(Completable.fromAction {
-                if (username != "nuck" || password != "chorris") {
-                    throw Exception("401 Unauthorized :(")
-                } else {
+//                if (username != "nuck" || password != "chorris") {
+//                    throw Exception("401 Unauthorized :(")
+//                } else {
                     setLoggedInUser(AppUser(username))
                     Completable.complete()
-                }
+//                }
             })
     }
 

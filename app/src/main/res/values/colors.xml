@@ -19,6 +19,8 @@
 
     <!--Backgrounds-->
     <color name="background_main">#f6fafe</color>
+    <color name="background_primary_light_semi_transparent">#AA718792</color>
+    <color name="background_black">#000000</color>
     <color name="background_buttons">#4e75bb</color>
     <color name="background_transparent">#00ffffff</color>
     <color name="background_divider">#edf5fc</color>

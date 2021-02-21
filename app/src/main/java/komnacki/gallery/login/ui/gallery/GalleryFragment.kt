@@ -24,11 +24,11 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery) {
     private val viewModel by activityViewModels<GalleryViewModel>()
     private val adapter: GalleryAdapter = GalleryAdapter {
         viewModel.select(it)
-        if(viewModel.isUserLogIn()) {
+//        if(viewModel.isUserLogIn()) {
             this.findNavController().navigate(R.id.toDetailFragment)
-        } else {
-            dialog.show()
-        }
+//        } else {
+//            dialog.show()
+//        }
     }
     private lateinit var dialog: AlertDialog
 

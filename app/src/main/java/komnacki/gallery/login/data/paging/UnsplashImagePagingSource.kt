@@ -2,6 +2,7 @@ package komnacki.gallery.login.data.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import komnacki.gallery.login.Constants
 import komnacki.gallery.login.data.ImageMapper
 import komnacki.gallery.login.data.network.UnsplashApiService
 import komnacki.gallery.login.domain.model.Image
@@ -13,14 +14,18 @@ class UnsplashImagePagingSource(
     private val mapper: ImageMapper) : PagingSource<Int, Image>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Image> {
-        val DEFAULT_PAGE_INDEX = 1
-        val page = params.key ?: DEFAULT_PAGE_INDEX
+        val defaultPageIndex = 1
+        val page = params.key ?: defaultPageIndex
 
         return try {
-            val response = service.search(UnsplashApiService.API_TOKEN, "góry", page, params.loadSize)
+            val response = service.search(
+                Constants.API_TOKEN,
+                Constants.SEARCH_PHRASE,
+                page,
+                params.loadSize)
             LoadResult.Page(
                 data = mapper.toDomainList(response.results),
-                prevKey = if(page == DEFAULT_PAGE_INDEX) { null } else { page - 1 },
+                prevKey = if(page == defaultPageIndex) { null } else { page - 1 },
                 nextKey = if(response.results.isEmpty()) { null } else { page + 1 }
             )
         } catch (exception : IOException) {

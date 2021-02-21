@@ -11,8 +11,4 @@ interface UnsplashApiService {
         @Query("page") pageNumber: Int,
         @Query("per_page") pageSize: Int
     ): SearchResponse
-
-    companion object {
-        const val API_TOKEN = "CGMrIUppQWgHAOi6sy-beLfhcCyNm1NKUW7SnX_vspc"
-    }
 }
