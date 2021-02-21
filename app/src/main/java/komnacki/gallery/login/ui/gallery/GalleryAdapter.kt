@@ -1,4 +1,4 @@
-package komnacki.gallery.login.ui
+package komnacki.gallery.login.ui.gallery
 
 import android.view.LayoutInflater
 import android.view.View

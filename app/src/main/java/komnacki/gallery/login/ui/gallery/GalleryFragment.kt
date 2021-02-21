@@ -1,4 +1,4 @@
-package komnacki.gallery.login.ui
+package komnacki.gallery.login.ui.gallery
 
 import android.os.Bundle
 import android.util.Log

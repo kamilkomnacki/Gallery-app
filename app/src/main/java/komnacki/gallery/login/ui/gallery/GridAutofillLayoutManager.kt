@@ -1,4 +1,4 @@
-package komnacki.gallery.login.ui
+package komnacki.gallery.login.ui.gallery
 
 import android.content.Context
 import android.util.TypedValue

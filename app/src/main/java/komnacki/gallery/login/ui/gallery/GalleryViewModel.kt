@@ -1,4 +1,4 @@
-package komnacki.gallery.login.ui
+package komnacki.gallery.login.ui.gallery
 
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData

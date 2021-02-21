@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/fragment_gallery"
-        android:name="komnacki.gallery.login.ui.GalleryFragment"
+        android:name="komnacki.gallery.login.ui.gallery.GalleryFragment"
         android:label="GalleryFragment">
 <!--        <action-->
 <!--            android:id="@+id/selectImage"-->
@@ -15,7 +15,7 @@
 
     <fragment
         android:id="@+id/fragment_login"
-        android:name="komnacki.gallery.login.ui.GalleryFragment"
+        android:name="komnacki.gallery.login.ui.gallery.GalleryFragment"
         android:label="LoginFragment"/>
 
 </navigation>
