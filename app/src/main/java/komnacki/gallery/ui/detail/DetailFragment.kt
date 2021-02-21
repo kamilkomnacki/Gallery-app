@@ -17,7 +17,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     private lateinit var disposable : Disposable
     private var currentInfoState = 0
 
-    private companion object CONSTANT {
+    private companion object {
         const val CURRENT_INFO_STATE = "CURRENT_INFO_STATE"
     }
 
