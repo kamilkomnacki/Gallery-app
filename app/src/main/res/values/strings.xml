@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Gallery</string>
+
+    <!-- Login -->
+    <string name="login_fragment_title">Account required</string>
+    <string name="login_prompt_email">Email</string>
+    <string name="login_prompt_password">Password</string>
+    <string name="login_action_sign_in">Sign in</string>
+    <string name="login_action_ime_sign_in">Sign in</string>
+    <string name="login_invalid_username">Not a valid address email</string>
+    <string name="login_invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 </resources>
