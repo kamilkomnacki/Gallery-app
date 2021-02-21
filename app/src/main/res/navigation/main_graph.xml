@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/fragment_detail"
-        android:name="komnacki.gallery.login.ui.login.LoginFragment"
+        android:name="komnacki.gallery.login.ui.detail.DetailFragment"
         android:label="DetailFragment">
     </fragment>
 

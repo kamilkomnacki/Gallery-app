@@ -2,6 +2,7 @@ package komnacki.gallery.login.ui.gallery
 
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
@@ -22,6 +23,7 @@ constructor(
 ) : AndroidViewModel(app) {
 
     val images : LiveData<PagingData<Image>> = fetchImages()
+    val selected = MutableLiveData<Image>()
 
     private fun fetchImages() : LiveData<PagingData<Image>> {
         return imageRepository.search()
@@ -29,4 +31,7 @@ constructor(
     }
 
     fun isUserLogIn() : Boolean = userRepository.isLogIn()
+    fun select(image: Image) {
+        selected.value = image
+    }
 }

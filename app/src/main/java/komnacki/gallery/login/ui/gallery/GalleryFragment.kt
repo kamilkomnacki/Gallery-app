@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.google.android.material.snackbar.Snackbar
@@ -19,10 +19,11 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery) {
 
     private companion object Constants {
         const val IS_DIALOG_VISIBLE = "IS_DIALOG_VISIBLE"
-
     }
-    private val viewModel by viewModels<GalleryViewModel>()
+
+    private val viewModel by activityViewModels<GalleryViewModel>()
     private val adapter: GalleryAdapter = GalleryAdapter {
+        viewModel.select(it)
         if(viewModel.isUserLogIn()) {
             this.findNavController().navigate(R.id.toDetailFragment)
         } else {
