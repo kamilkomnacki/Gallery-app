@@ -17,6 +17,7 @@
     <string name="gallery_snackbar_message">Something went wrong, please try again</string>
     <string name="gallery_retry_button">Retry</string>
     <string name="gallery_dialog_title">Account Required</string>
+    <string name="gallery_dialog_description">To view the picture in full size, you need to sign in</string>
     <string name="gallery_dialog_positive_button">Sing in</string>
     <string name="gallery_dialog_negative_button">Cancel</string>
 

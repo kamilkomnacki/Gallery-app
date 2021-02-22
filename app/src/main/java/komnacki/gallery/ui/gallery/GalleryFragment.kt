@@ -98,6 +98,7 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery) {
     private fun getLoginDialog(context: Context): AlertDialog {
         return AlertDialog.Builder(context)
             .setTitle(getString(R.string.gallery_dialog_title))
+            .setMessage(getString(R.string.gallery_dialog_description))
             .setPositiveButton(getString(R.string.gallery_dialog_positive_button)) { dialogInterface, i ->
                 this.findNavController().navigate(R.id.toLoginFragment)
             }
