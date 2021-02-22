@@ -9,6 +9,7 @@ object Constants {
 
     const val GALLERY_DEFAULT_COLUMN_WIDTH = 300
     const val PASSWORD_MIN_LENGTH = 5
+    const val PASSWORD_MAX_LENGTH = 32
     const val LOGIN_REQUEST_TIMEOUT_SECONDS: Long = 10
     const val LOGIN_TAG = "Login"
 

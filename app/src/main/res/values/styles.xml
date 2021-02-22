@@ -3,9 +3,10 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimary">@color/primary_light</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/secondary</item>
+        <item name="toolbarStyle">@style/ThemeOverlay.MaterialComponents.Dark.ActionBar</item>
     </style>
 
     <style name="textInputLayout" >
@@ -23,6 +24,7 @@
         <item name="android:layout_marginBottom">@dimen/detail_info_elements_space</item>
         <item name="android:visibility">gone</item>
         <item name="layout_constraintHorizontal_chainStyle">packed</item>
+        <item name="android:textColor">@color/font_black</item>
     </style>
 
 </resources>
