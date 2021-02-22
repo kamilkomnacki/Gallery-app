@@ -90,6 +90,6 @@ constructor(
     }
 
     private fun isPasswordValid(password: String): Boolean {
-        return password.length > Constants.PASSWORD_MIN_LENGTH
+        return password.length in Constants.PASSWORD_MIN_LENGTH .. Constants.PASSWORD_MAX_LENGTH
     }
 }
