@@ -9,13 +9,17 @@
     <string name="login_action_cancel">Cancel</string>
     <string name="login_action_ime_sign_in">Sign in</string>
     <string name="login_invalid_username">Not a valid username</string>
-    <string name="login_invalid_password">Password must be >5 and \u003C32 characters</string>
+    <string name="login_invalid_password">Password must be >5 and \u003C32 length</string>
     <string name="login_failed">"Login failed"</string>
     <string name="login_success">"Login success"</string>
+
+    <!-- Gallery -->
     <string name="gallery_snackbar_message">Something went wrong, please try again</string>
     <string name="gallery_retry_button">Retry</string>
     <string name="gallery_dialog_title">Account Required</string>
     <string name="gallery_dialog_positive_button">Sing in</string>
     <string name="gallery_dialog_negative_button">Cancel</string>
+
+    <!-- Detail -->
     <string name="detail_author_pattern">Author: %s</string>
 </resources>
