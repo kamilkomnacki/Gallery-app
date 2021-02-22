@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    app:cardCornerRadius="6dp"
-    app:cardElevation="2dp">
+    android:layout_margin="@dimen/gallery_item_margin"
+    app:cardCornerRadius="@dimen/gallery_item_corner_radius"
+    app:cardElevation="@dimen/gallery_item_elevation">
 
     <ImageView
         android:id="@+id/ivItem"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:maxHeight="300dp"
+        android:layout_width="@dimen/gallery_item_width"
+        android:layout_height="@dimen/gallery_item_height"
+        android:maxHeight="@dimen/gallery_item_max_height"
         android:scaleType="centerCrop"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        tools:srcCompat="@tools:sample/backgrounds/scenic"
+        tools:ignore="ContentDescription" />
 
 </androidx.cardview.widget.CardView>

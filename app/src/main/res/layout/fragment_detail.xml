@@ -21,43 +21,36 @@
         android:id="@+id/container_detail_info"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@color/background_primary_light_semi_transparent"
+        android:paddingStart="@dimen/default_horizontal_margin"
+        android:paddingEnd="@dimen/default_horizontal_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/background_primary_light_semi_transparent">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/tv_author"
+            style="@style/detail_info_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:visibility="gone"
-            tools:text="Author's name"
             app:layout_constraintBottom_toTopOf="@id/tv_description"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Author's name" />
 
         <TextView
             android:id="@+id/tv_description"
+            style="@style/detail_info_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="5"
-            android:visibility="gone"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:paddingBottom="8dp"
-            tools:text="Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. "
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_author"/>
+            app:layout_constraintTop_toBottomOf="@id/tv_author"
+            tools:text="Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. Description can be long. " />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.motion.widget.MotionLayout>

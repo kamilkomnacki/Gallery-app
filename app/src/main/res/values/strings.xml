@@ -9,7 +9,7 @@
     <string name="login_action_cancel">Cancel</string>
     <string name="login_action_ime_sign_in">Sign in</string>
     <string name="login_invalid_username">Not a valid username</string>
-    <string name="login_invalid_password">Password must be >5 characters</string>
+    <string name="login_invalid_password">Password must be >5 and \u003C32 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="login_success">"Login success"</string>
     <string name="gallery_snackbar_message">Something went wrong, please try again</string>

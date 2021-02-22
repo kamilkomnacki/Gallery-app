@@ -8,4 +8,21 @@
         <item name="colorAccent">@color/secondary</item>
     </style>
 
+    <style name="textInputLayout" >
+        <item name="android:layout_marginTop">@dimen/login_password_margin_top</item>
+        <item name="layout_constraintVertical_chainStyle">packed</item>
+        <item name="layout_constraintWidth_max">@dimen/login_input_max_width</item>
+    </style>
+
+    <style name="loginButton">
+        <item name="android:layout_marginTop">@dimen/login_button_margin_top</item>
+        <item name="layout_constraintVertical_chainStyle">packed</item>
+    </style>
+
+    <style name="detail_info_label">
+        <item name="android:layout_marginBottom">@dimen/detail_info_elements_space</item>
+        <item name="android:visibility">gone</item>
+        <item name="layout_constraintHorizontal_chainStyle">packed</item>
+    </style>
+
 </resources>
