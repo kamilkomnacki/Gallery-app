@@ -70,7 +70,7 @@ constructor(
     }
 
     fun cancel() {
-        if (::loginJob.isInitialized) {
+        if (::loginJob.isInitialized && loginJob.isDisposed.not()) {
             loginJob.dispose()
         }
     }
@@ -91,5 +91,10 @@ constructor(
 
     private fun isPasswordValid(password: String): Boolean {
         return password.length in Constants.PASSWORD_MIN_LENGTH .. Constants.PASSWORD_MAX_LENGTH
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        cancel()
     }
 }
