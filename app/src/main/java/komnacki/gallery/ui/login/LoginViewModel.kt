@@ -63,12 +63,6 @@ constructor(
         }
     }
 
-    fun cancel() {
-        if (::loginJob.isInitialized && loginJob.isDisposed.not()) {
-            loginJob.dispose()
-        }
-    }
-
     fun loginDataChanged(username: String, password: String) {
         if (!isUserNameValid(username)) {
             _loginForm.value = LoginFormState(usernameError = R.string.login_invalid_username)
@@ -85,6 +79,12 @@ constructor(
 
     private fun isPasswordValid(password: String): Boolean {
         return password.length in Constants.PASSWORD_MIN_LENGTH .. Constants.PASSWORD_MAX_LENGTH
+    }
+
+    fun cancel() {
+        if (::loginJob.isInitialized && loginJob.isDisposed.not()) {
+            loginJob.dispose()
+        }
     }
 
     override fun onCleared() {
