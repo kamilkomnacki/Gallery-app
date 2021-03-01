@@ -12,6 +12,7 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import komnacki.gallery.Constants
 import komnacki.gallery.R
+import komnacki.gallery.domain.model.Image
 import kotlinx.android.synthetic.main.fragment_gallery.*
 
 @AndroidEntryPoint
@@ -22,14 +23,7 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery) {
     }
 
     private val viewModel by activityViewModels<GalleryViewModel>()
-    private val adapter: GalleryAdapter = GalleryAdapter {
-        viewModel.select(it)
-        if(viewModel.isUserLogIn()) {
-            this.findNavController().navigate(R.id.toDetailFragment)
-        } else {
-            dialog.show()
-        }
-    }
+    private val adapter: GalleryAdapter = GalleryAdapter { onClickImage(it) }
     private lateinit var dialog: AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,6 +55,15 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery) {
     override fun onDestroyView() {
         super.onDestroyView()
         dialog.dismiss()
+    }
+
+    private fun onClickImage(it: Image) {
+        viewModel.select(it)
+        if (viewModel.isUserLogIn()) {
+            this.findNavController().navigate(R.id.toDetailFragment)
+        } else {
+            dialog.show()
+        }
     }
 
     private fun setUpStateListener(onError: () -> Unit) {
