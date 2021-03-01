@@ -14,7 +14,7 @@ import javax.inject.Singleton
 object UseCaseModule {
     @Singleton
     @Provides
-    fun provideGetImagesUsecase(
+    fun provideGetImagesUseCase(
         imageRepository: ImageRepository,
         userRepository: UserRepository
     ): GetImagesUseCase {
