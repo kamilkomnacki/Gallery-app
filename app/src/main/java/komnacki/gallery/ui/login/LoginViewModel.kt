@@ -10,10 +10,8 @@ import io.reactivex.disposables.Disposable
 import komnacki.gallery.App
 import komnacki.gallery.Constants
 import komnacki.gallery.R
-import komnacki.gallery.domain.UserRepository
-import komnacki.gallery.rxutils.SchedulerProvider
+import komnacki.gallery.domain.usecase.LogInUseCase
 import kotlinx.coroutines.launch
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @HiltViewModel
@@ -21,7 +19,7 @@ class LoginViewModel
 @Inject
 constructor(
     app: App,
-    private val repository: UserRepository
+    private val logInUseCase: LogInUseCase
 ) : AndroidViewModel(app) {
 
     private lateinit var loginJob: Disposable
@@ -37,10 +35,7 @@ constructor(
             Log.i(Constants.LOGIN_TAG, "Start sign in process")
             _loginResult.value = LoginResult(isPending = true)
 
-            loginJob = repository.logIn(username, password)
-                .timeout(Constants.LOGIN_REQUEST_TIMEOUT_SECONDS, TimeUnit.SECONDS)
-                .subscribeOn(SchedulerProvider().io)
-                .observeOn(SchedulerProvider().mainThread)
+            loginJob = logInUseCase.invoke(username, password)
                 .doOnComplete {
                     Log.i(Constants.LOGIN_TAG, "Sign in successful")
                     _loginResult.value = LoginResult(
@@ -61,11 +56,10 @@ constructor(
                         isPending = false
                     )
                 }
-                .subscribe({
+                .onErrorComplete()
+                .subscribe {
                     /**Action already handled*/
-                }, {
-                    /**Exception already catched.*/
-                })
+                }
         }
     }
 
