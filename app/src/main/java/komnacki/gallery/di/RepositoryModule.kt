@@ -18,7 +18,7 @@ import javax.inject.Singleton
 object RepositoryModule {
     @Singleton
     @Provides
-    fun provideUnsplashImageRepository(
+    fun provideImageRepository(
         unsplashImageService: UnsplashApiService,
         imageMapper: ImageMapper
     ): ImageRepository {
