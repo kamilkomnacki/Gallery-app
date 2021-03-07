@@ -1,8 +1,11 @@
 package komnacki.gallery.data.network
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import komnacki.gallery.data.model.UnsplashImage
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class SearchResponse(
     @SerializedName("total")
     val total: Int,
@@ -10,4 +13,4 @@ data class SearchResponse(
     val totalPages: Int,
     @SerializedName("results")
     val results: List<UnsplashImage>
-)
+) : Parcelable
